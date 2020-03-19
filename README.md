@@ -2,7 +2,7 @@
 
 Common operations with ffmpeg. Unless otherwise noted, these commands assume Windows + Powershell.
 
-Check [this guide](https://nono.ma/ffmpeg-and-imagemagick-guide) by @nonoesp for other cool tricks.
+Check [this guide](https://nono.ma/ffmpeg-and-imagemagick-guide) by [@nonoesp](https://github.com/nonoesp) for other cool tricks.
 
 ### Video from frames
 
