@@ -51,3 +51,19 @@ Taken from [here](https://reiners.io/downscaling-4k-video-with-ffmpeg/).
     ffmpeg -i input.mp4 -vf reverse -af areverse reversed.mp4
 
 Apparently, this buffers the entire clip, so for long ones, chop it, reverse them and concat. 
+
+### Concat video: from the same source
+
+Concattenating a list of videos from the same source (same format and codecs) can be done fast with the [concat demuxer](https://trac.ffmpeg.org/wiki/Concatenate#demuxer) without needing to reencode them. 
+
+First, create a `playlist.txt` file with the names of the files to `concat` (PS): 
+
+    foreach ($i in Get-ChildItem .\*.mp4) {echo "file '$i'" >> playlist.txt}
+
+If using CMD:
+
+    (for %i in (*.mp4) do @echo file '%i') > playlist.txt
+    
+Files can now be stitched:
+
+    ffmpeg -f concat -i playlist.txt -c copy D:\output.mp4
