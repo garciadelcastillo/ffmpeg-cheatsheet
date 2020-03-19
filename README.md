@@ -4,6 +4,12 @@ Common operations with ffmpeg. Unless otherwise noted, these commands assume Win
 
 Check [this guide](https://nono.ma/ffmpeg-and-imagemagick-guide) by [@nonoesp](https://github.com/nonoesp) for other cool tricks.
 
+### Extract frames from video
+
+    ffmpeg -i input.mp4 frames/frame_%05d.png
+
+This will take an input video, and export all frames to a folder in the video's native fps. Please note that the folder must exist.
+
 ### Video from frames
 
     ffmpeg -framerate 30 -i frame_%05d.png output.mp4
