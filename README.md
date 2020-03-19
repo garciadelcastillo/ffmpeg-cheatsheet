@@ -3,27 +3,41 @@ Common operations with ffmpeg
 
 Unless otherwise noted, these commands assume Windows + Powershell.
 
+### Video from frames
+
+    ffmpeg -framerate 30 -i frame_%05d.png output.mp4
+
+`-framerate 30` sets the rate for the *input stream*.  
+`frame_%05d.png` assumes a filename with a suffix of 5 padded digits.
+
+If setting a different fps, force `ffmpeg` to not drop frames by matching the *input* and *output* streams reates:
+
+    ffmpeg -framerate 15 -i frame_%05d.png -r 15 output.mp4
+
+Alternatively, a video can be "accelerated" by purposedly dropping frames, setting different *input* and *output* streams reates. This example accelerates the video by x10, still creating it at `30fps`:
+
+    ffmpeg -framerate 300 -i frame_%05d.png -r 30 output.mp4
+
 ### GIF from frames with single palette
 
 This creates a lightweight, optimized GIF file with one palette. Useful when color is consistent across frames. 
 
-    ffmpeg -y -i frames_%05d.png -vf palettegen palette.png
+    ffmpeg -y -i frame_%05d.png -vf palettegen palette.png
     
 This generates a palette file from the *first frame* of the sequence.
 
 GIF can then be generated from files:
 
-    ffmpeg -r 5 -y -i frames_%05d.png -i palette.png -filter_complex "paletteuse" animation.gif
+    ffmpeg -r 5 -y -i frame_%05d.png -i palette.png -filter_complex "paletteuse" animation.gif
 
 `-r` defines the fps rate for the GIF.
 `-y` auto-overwrites previous existing files.
-`frames_%05d.png` assumes a filename with a suffix of 5 padded digits.
 
 ### GIF from frames with multiple palettes
 
 When color varies significantly across frames in the input, it is better to create one palette per frame; better quality GIF, heavier file.
 
-    ffmpeg -r 5 -i frames_%05d.png -filter_complex "\[0:v] split [a\][b];\[a] palettegen=stats_mode=single [p];[b\][p] paletteuse=new=1" animation.gif
+    ffmpeg -r 5 -i frame_%05d.png -filter_complex "\[0:v] split [a\][b];\[a] palettegen=stats_mode=single [p];[b\][p] paletteuse=new=1" animation.gif
 
 Taken from this [article](https://medium.com/@Peter_UXer/small-sized-and-beautiful-gifs-with-ffmpeg-25c5082ed733).
 
