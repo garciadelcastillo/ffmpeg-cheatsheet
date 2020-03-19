@@ -45,3 +45,9 @@ Omit the `-to` parameter to trim till the end. Use `-t` parameter instead to spe
     ffmpeg -i input.mp4 -vf scale=1920:1080 -c:v libx264 smaller.mp4
     
 Taken from [here](https://reiners.io/downscaling-4k-video-with-ffmpeg/).
+
+### Reversing video (and audio)
+    
+    ffmpeg -i input.mp4 -vf reverse -af areverse reversed.mp4
+
+Apparently, this buffers the entire clip, so for long ones, chop it, reverse them and concat. 
