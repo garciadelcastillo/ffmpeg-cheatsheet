@@ -1,7 +1,8 @@
 # ffmpeg-cheatsheet
-Common operations with ffmpeg
 
-Unless otherwise noted, these commands assume Windows + Powershell.
+Common operations with ffmpeg. Unless otherwise noted, these commands assume Windows + Powershell.
+
+Check [this guide](https://nono.ma/ffmpeg-and-imagemagick-guide) by @nonoesp for other cool tricks.
 
 ### Video from frames
 
