@@ -81,3 +81,13 @@ If using CMD:
 Files can now be stitched:
 
     ffmpeg -f concat -i playlist.txt -c copy D:\output.mp4
+
+### Concat video: from different sources
+
+If videos come from different sources and/or have different formats/codecs, it is necessary to [reencode them](https://trac.ffmpeg.org/wiki/Concatenate#differentcodec). For three files, it would look like this:
+
+    ffmpeg -i 01.mp4 -i 02.mp4 -i 03.mp4 -filter_complex "[0:v:0][0:a:0][1:v:0][1:a:0][2:v:0][2:a:0]concat=n=3:v=1:a=1[outv][outa]" -map "[outv]" -map "[outa]" output.mp4
+    
+Unfortunately, there is no way a `playlist.txt` file can be fed as input for longer lists; the whole call must be programmatically generated. Also, PowerShell has a 8191 char max limit... 
+
+This repo contains `concat_generator` a Processing sketch that points to a folder, and generates a `concat.bat` file with a bash call to concat all video files in that folder. Remember to change the allowed extensions in the Processing file.
