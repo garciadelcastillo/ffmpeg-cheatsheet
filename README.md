@@ -63,9 +63,9 @@ Taken from this [article](https://medium.com/@Peter_UXer/small-sized-and-beautif
 
 Omit the `-to` parameter to trim till the end. Use `-t` parameter instead to specify duration (not end time). 
 
-### Downscaling 4k video
+### Changing video size
 
-    ffmpeg -i input.mp4 -vf scale=1920:1080 -c:v libx264 smaller.mp4
+    ffmpeg -i input.mp4 -vf scale=960:540 -c:v libx264 smaller.mp4
     
 Taken from [here](https://reiners.io/downscaling-4k-video-with-ffmpeg/).
 
