@@ -100,3 +100,11 @@ If videos come from different sources and/or have different formats/codecs, it i
 Unfortunately, there is no way a `playlist.txt` file can be fed as input for longer lists; the whole call must be programmatically generated. Also, PowerShell has a 8191 char max limit... 
 
 This repo contains `concat_generator` a Processing sketch that points to a folder, and generates a `concat.bat` file with a bash call to concat all video files in that folder. Remember to change the allowed extensions in the Processing file.
+
+### Batch process a bunch of files in a folder
+
+Say you want to reencode a bunch of `mp4` files in a folder. `Powershell` doesn't take `-pattern_type glob`... So, a possible batch process could be this:
+
+    dir *.* | foreach-object { $newname = $_.Name.Remove($_.Name.Length - $_.Extension.Length) + ".mp4"; $newname = $newname.Replace(".mp4","_lite.mp4"); ffmpeg -i "$_" $newname }
+
+I know, this is hideous, but it works... :sweat_smile:
