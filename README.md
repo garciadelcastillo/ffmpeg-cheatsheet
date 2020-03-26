@@ -105,6 +105,6 @@ This repo contains `concat_generator` a Processing sketch that points to a folde
 
 Say you want to reencode a bunch of `mp4` files in a folder. `Powershell` doesn't take `-pattern_type glob`... So, a possible batch process could be this:
 
-    dir *.* | foreach-object { $newname = $_.Name.Remove($_.Name.Length - $_.Extension.Length) + ".mp4"; $newname = $newname.Replace(".mp4","_lite.mp4"); ffmpeg -i "$_" $newname }
+    foreach ($i in Get-ChildItem .\*.mp4) {ffmpeg -i $i.Name $i.Name.Replace(".mp4","_lite.mp4")}
 
-I know, this is hideous, but it works... :sweat_smile:
+Takes al `mp4` files in a folder, and reencodes them with a suffix. I know, this is hideous, but it works! :sweat_smile:
