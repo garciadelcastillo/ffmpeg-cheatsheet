@@ -108,3 +108,11 @@ Say you want to reencode a bunch of `mp4` files in a folder. `Powershell` doesn'
     foreach ($i in Get-ChildItem .\*.mp4) {ffmpeg -i $i.Name $i.Name.Replace(".mp4","_lite.mp4")}
 
 Takes al `mp4` files in a folder, and reencodes them with a suffix. I know, this is hideous, but it works! :sweat_smile:
+
+### Creating a mosaic of videos
+
+The following code produces a 3x3 collage of videos at 1920x1080:
+
+    ffmpeg -i .\videos\01.mp4 -i .\videos\02.mp4 -i .\videos\03.mp4 -i .\videos\04.mp4 -i .\videos\05.mp4 -i .\videos\06.mp4 -i .\videos\07.mp4 -i .\videos\08.mp4 -i .\videos\09.mp4 -filter_complex " [0:v] setpts=PTS-STARTPTS, scale=640:320 [a0]; [1:v] setpts=PTS-STARTPTS, scale=640:320 [a1]; [2:v] setpts=PTS-STARTPTS, scale=640:320 [a2]; [3:v] setpts=PTS-STARTPTS, scale=640:320 [a3]; [4:v] setpts=PTS-STARTPTS, scale=640:320 [a4]; [5:v] setpts=PTS-STARTPTS, scale=640:320 [a5]; [6:v] setpts=PTS-STARTPTS, scale=640:320 [a6]; [7:v] setpts=PTS-STARTPTS, scale=640:320 [a7]; [8:v] setpts=PTS-STARTPTS, scale=640:320 [a8]; [a0][a1][a2][a3][a4][a5][a6][a7][a8]xstack=inputs=9:layout=0_0|w0_0|w0+w1_0|0_h0|w0_h0|w0+w1_h0|0_h0+h1|w0_h0+h1|w0+w1_h0+h1[out]" -map "[out]" -c:v libx264 -t '30' -f matroska mosaic.mp4
+
+Yes, each video needs to be manually in the command. Things are easy to replace on a text editor though. From [here](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos%20using%20xstack).
