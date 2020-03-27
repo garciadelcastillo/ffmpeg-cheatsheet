@@ -52,7 +52,7 @@ GIF can then be generated from files:
 
 When color varies significantly across frames in the input, it is better to create one palette per frame; better quality GIF, heavier file.
 
-    ffmpeg -r 5 -i frame_%05d.png -filter_complex "\[0:v] split [a\][b];\[a] palettegen=stats_mode=single [p];[b\][p] paletteuse=new=1" animation.gif
+    ffmpeg -r 5 -i frame_%05d.png -filter_complex "[0:v] split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1" animation.gif
 
 Taken from this [article](https://medium.com/@Peter_UXer/small-sized-and-beautiful-gifs-with-ffmpeg-25c5082ed733).
 
