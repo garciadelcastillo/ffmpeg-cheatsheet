@@ -125,6 +125,6 @@ Yes, each video needs to be manually in the command. Things are easy to replace 
 
 ### Check keyframes in a video
 
-The following prints out the timestamps for the keyframes of a video:
+The following prints out the timestamps for the keyframes of a video ([source](https://stackoverflow.com/a/30982414/1934487)):
 
     ffprobe -loglevel error -skip_frame nokey -select_streams v:0 -show_entries frame=pkt_pts_time -of csv=print_section=0 input.mp4
