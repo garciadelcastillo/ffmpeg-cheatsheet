@@ -68,7 +68,7 @@ Taken from this [article](https://medium.com/@Peter_UXer/small-sized-and-beautif
     ffmpeg -i input.mp4 -ss 00:00:00 -to 01:30:15 -c:v copy -c:a copy output.mp4
 
 Omit the `-to` parameter to trim till the end. Use `-t` parameter instead to specify duration (not end time). 
-@RamyAydarous notes that this method [doesn't start the trim from the previous keyframe](https://github.com/mifi/lossless-cut/pull/13), and therefore generates an initial static frame that extends into the next keyframe. Switch the order of `-ss` and `-i` parameters to force trim from previous keyframe. 
+@RamyAydarous notes that this method [doesn't start the trim from the previous keyframe](https://github.com/mifi/lossless-cut/pull/13), and therefore generates an initial static frame that extends into the next keyframe. Switch the order of `-ss` and `-i` parameters to force trim from previous keyframe (see [here](https://trac.ffmpeg.org/wiki/Seeking) end of the page).
 
 ### Changing video size
 
