@@ -4,7 +4,7 @@ Common operations with [ffmpeg](https://www.ffmpeg.org/). For the love of me, I 
 
 Unless otherwise noted, these commands assume `Windows` + `Powershell`.
 
-Check [this guide](https://nono.ma/ffmpeg-and-imagemagick-guide) by [@nonoesp](https://github.com/nonoesp) for other cool tricks.
+Check [this guide](https://nono.ma/ffmpeg-and-imagemagick-guide) by [@nonoesp](https://github.com/nonoesp) for other cool tricks. [This guide](https://github.com/uclaconditional/video-and-image-cli) is also good for advanced compression commands. 
 
 ### Extract frames from video
 
