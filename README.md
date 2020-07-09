@@ -19,11 +19,11 @@ This will take an input video, and export all frames to a folder in the video's 
 `-framerate 30` sets the rate for the *input stream*.  
 `frame_%05d.png` assumes a filename with a suffix of 5 padded digits.
 
-If setting a different fps, force `ffmpeg` to not drop frames by matching the *input* and *output* streams reates:
+If setting a different fps, force `ffmpeg` to not drop frames by matching the *input* and *output* streams rates:
 
     ffmpeg -framerate 15 -i frame_%05d.png -r 15 output.mp4
 
-Alternatively, a video can be "accelerated" by purposedly dropping frames, setting different *input* and *output* streams reates. This example accelerates the video by x10, still creating it at `30fps`:
+Alternatively, a video can be "accelerated" by purposedly dropping frames, setting different *input* and *output* streams rates. This example accelerates the video by x10, still creating it at `30fps`:
 
     ffmpeg -framerate 300 -i frame_%05d.png -r 30 output.mp4
 
