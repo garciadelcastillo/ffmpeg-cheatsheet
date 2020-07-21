@@ -56,6 +56,14 @@ When color varies significantly across frames in the input, it is better to crea
 
 Taken from this [article](https://medium.com/@Peter_UXer/small-sized-and-beautiful-gifs-with-ffmpeg-25c5082ed733).
 
+### GIF from video
+
+Similarly to before, GIFs can be created directly from video. 
+
+    ffmpeg -i input.mp4 -vf "fps=10,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
+
+See [more options here](https://superuser.com/a/556031).
+
 ### Speeding video up
 
     ffmpeg -i input.mp4 -an -filter:v "setpts=0.1*PTS" output.mp4
