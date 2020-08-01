@@ -137,3 +137,25 @@ Yes, each video needs to be manually in the command. Things are easy to replace 
 The following prints out the timestamps for the keyframes of a video ([source](https://stackoverflow.com/a/30982414/1934487)):
 
     ffprobe -loglevel error -skip_frame nokey -select_streams v:0 -show_entries frame=pkt_pts_time -of csv=print_section=0 input.mp4
+
+### Replacing the sound track on a video
+
+Or in other words, extracting the audio track of a video, removing it and adding a new one. Thanks @arastoo for the pointers!
+
+First of all, and to avoid transcoding, you should check the audio file type that the video file contains:
+
+    ffprobe video.mp4
+    
+Once the file format is determined, extract sound the file without re-encoding:
+
+    ffmpeg -i video.mp4 -vn -acodec copy oldAudio.aac
+
+Remove the audio file from the video:
+
+    ffmpeg -i video.mp4 -c copy -an videoNoSound.mp4
+
+And now just add new audio to that file:
+
+    ffmpeg -i videoNoSound.mp4 -i newAudio.mp3 -c:v copy -c:a copy videoWithNewSound.mp4
+
+[This guide](https://gist.github.com/protrolium/e0dbd4bb0f1a396fcb55) has lots of `ffmpeg` audio-related tips!
