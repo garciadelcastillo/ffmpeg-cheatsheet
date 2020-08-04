@@ -124,7 +124,19 @@ Say you want to reencode a bunch of `mp4` files in a folder. `Powershell` doesn'
 
 Takes al `mp4` files in a folder, and reencodes them with a suffix. I know, this is hideous, but it works! :sweat_smile:
 
-### Creating a mosaic of videos
+### Creating a mosaic/montage/collage of images
+
+For this one, use Imagemagick :)
+
+    magick montage *.png -geometry 224x224 -tile 27x14 montage.png
+
+Creates a 27x14 collage with the stills. Margins can be added to the `geometry` parameter, as well as background and borders:
+
+    magick montage *.png -geometry 256x128>+10+5 -tile 12x10 -background white -border 1 -bordercolor lightgray montage.png
+
+The `>` operator reduces images only bigger than `256x128`.
+
+### Creating a mosaic/montage/collage of videos
 
 The following code produces a 3x3 collage of videos at 1920x1080:
 
