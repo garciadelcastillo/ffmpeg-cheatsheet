@@ -25,6 +25,10 @@ Frames can be rescaled on the fly, and image quality controlled. This example wi
 `-framerate 30` sets the rate for the *input stream*.  
 `frame_%05d.png` assumes a filename with a suffix of 5 padded digits.
 
+To force a particular codec, use `-vf format=`:
+
+    ffmpeg -framerate 30 -i frame_%05d.png -vf format=yuv420p output.mp4
+
 If setting a different fps, force `ffmpeg` to not drop frames by matching the *input* and *output* streams rates:
 
     ffmpeg -framerate 15 -i frame_%05d.png -r 15 output.mp4
