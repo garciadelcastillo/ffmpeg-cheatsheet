@@ -6,6 +6,8 @@ Unless otherwise noted, these commands assume `Windows` + `Powershell`.
 
 Check [this guide](https://nono.ma/ffmpeg-and-imagemagick-guide) by [@nonoesp](https://github.com/nonoesp) for other cool tricks. [This guide](https://github.com/uclaconditional/video-and-image-cli) is also good for advanced compression commands. 
 
+Check out my other [ImageMagick cheatsheet](https://github.com/garciadelcastillo/imagemagick-cheatsheet) too.
+
 ### Extract frames from video
 
     ffmpeg -i input.mp4 frames/frame_%05d.png
