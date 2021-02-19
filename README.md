@@ -81,6 +81,14 @@ See [more options here](https://superuser.com/a/556031).
 `0.1` accelerates x10 by dropping frames, `0.01` would accelerate x100 and so on.
 `-an` removes audio.
 
+### Extreme video compression
+
+Sometimes, it is useful to compress a video to a very lossy output, like when editing very HQ files.
+
+    ffmpeg -i input.mp4 -c:v libx264 -crf 51 -preset veryslow -c:a copy -r 30 ouptut.mp4
+
+This example sets quality to terrible (`-crf` from `0` best quality to `51` worst),  and drops frames to 30fps. Remove the `-preset` to trade speed of a few extra bytes. 
+
 ### Lossless cropping/trimming
 
     ffmpeg -i input.mp4 -ss 00:00:00 -to 01:30:15 -c:v copy -c:a copy output.mp4
