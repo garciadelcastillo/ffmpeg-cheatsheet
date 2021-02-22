@@ -189,3 +189,9 @@ And now just add new audio to that file:
     ffmpeg -i videoNoSound.mp4 -i newAudio.mp3 -c:v copy -c:a copy videoWithNewSound.mp4
 
 [This guide](https://gist.github.com/protrolium/e0dbd4bb0f1a396fcb55) has lots of `ffmpeg` audio-related tips!
+
+### Add dummy silent audio to video
+
+`concat` has given me problems when adding a video with no sound (like a timelapse). This adds a dummy silent track (taken from [here](https://stackoverflow.com/a/12375018/1934487)):
+
+    ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i input.mp4 -c:v copy -c:a aac -shortest output.mp4
