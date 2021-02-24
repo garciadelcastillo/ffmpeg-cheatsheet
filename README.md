@@ -162,7 +162,11 @@ The following code produces a 3x3 collage of videos at 1920x1080:
 
 Yes, each video needs to be manually in the command. Things are easy to replace on a text editor though. From [here](https://trac.ffmpeg.org/wiki/Create%20a%20mosaic%20out%20of%20several%20input%20videos%20using%20xstack).
 
-### Check keyframes in a video
+### Check properties of a video
+
+This prints out the framerate of a video, like `30/1`:
+
+    ffprobe -v 0 -of csv=p=0 -select_streams v:0 -show_entries stream=r_frame_rate input.mp4
 
 The following prints out the timestamps for the keyframes of a video ([source](https://stackoverflow.com/a/30982414/1934487)):
 
