@@ -172,6 +172,10 @@ The following prints out the timestamps for the keyframes of a video ([source](h
 
     ffprobe -loglevel error -skip_frame nokey -select_streams v:0 -show_entries frame=pkt_pts_time -of csv=print_section=0 input.mp4
 
+General metadata of a file can be exported to text:
+
+    ffmpeg -i input.mp4 -f ffmetadata metadata.txt
+
 ### Replacing the sound track on a video
 
 Or in other words, extracting the audio track of a video, removing it and adding a new one. Thanks @arastoo for the pointers!
