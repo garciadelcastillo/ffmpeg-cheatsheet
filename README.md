@@ -164,15 +164,19 @@ Yes, each video needs to be manually in the command. Things are easy to replace 
 
 ### Check properties of a video
 
-This prints out the framerate of a video, like `30/1`:
+This prints out the **duration** of a video in seconds, like `18.544322` ([more](https://superuser.com/a/945604/896030)):
+
+    ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 input.mp4
+
+This prints out the **framerate** of a video, like `30/1`:
 
     ffprobe -v 0 -of csv=p=0 -select_streams v:0 -show_entries stream=r_frame_rate input.mp4
 
-The following prints out the timestamps for the keyframes of a video ([source](https://stackoverflow.com/a/30982414/1934487)):
+The following prints out the **timestamps for the keyframes** of a video ([source](https://stackoverflow.com/a/30982414/1934487)):
 
     ffprobe -loglevel error -skip_frame nokey -select_streams v:0 -show_entries frame=pkt_pts_time -of csv=print_section=0 input.mp4
 
-General metadata of a file can be exported to text:
+General **metadata** of a file can be exported to text:
 
     ffmpeg -i input.mp4 -f ffmetadata metadata.txt
 
