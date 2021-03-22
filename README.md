@@ -122,7 +122,7 @@ If using CMD:
     
 Files can now be stitched:
 
-    ffmpeg -f concat -i playlist.txt -c copy D:\output.mp4
+    ffmpeg -f concat -i playlist.txt -c copy output.mp4
 
 ### Concat video: from different sources
 
