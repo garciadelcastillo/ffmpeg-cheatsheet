@@ -33,6 +33,10 @@ If setting a different fps, force `ffmpeg` to not drop frames by matching the *i
 
     ffmpeg -framerate 15 -i frame_%05d.png -r 15 output.mp4
 
+Frames can also be duplicated by setting faster output fps (IG won't let me publish videos at 5fps 😭😭):
+
+    ffmpeg -r 5 -i frame_%05d.png -r 30 -vf format=yuv420p output.mp4 
+
 Alternatively, a video can be "accelerated" by purposedly dropping frames, setting different *input* and *output* streams rates. This example accelerates the video by x10, still creating it at `30fps`:
 
     ffmpeg -framerate 300 -i frame_%05d.png -r 30 output.mp4
