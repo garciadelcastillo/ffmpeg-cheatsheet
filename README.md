@@ -85,6 +85,16 @@ See [more options here](https://superuser.com/a/556031).
 `0.1` accelerates x10 by dropping frames, `0.01` would accelerate x100 and so on.
 `-an` removes audio.
 
+New frames can be added using motion interpolation via `minterpolate`:
+
+    ffmpeg -i input_30fps.mp4 -filter:v minterpolate -r 60 outut_60fps.mp4
+
+This can work too when creating a video from frames, but if they are not related, result is wonky:
+
+    ffmpeg -r 4 -i .\frame_%05d.png -filter:v minterpolate -r 30 output.mp4
+
+Alternatively, [Butterflow](https://github.com/dthpham/butterflow) is also an option...
+
 ### Extreme video compression
 
 Sometimes, it is useful to compress a video to a very lossy output, like when editing very HQ files.
