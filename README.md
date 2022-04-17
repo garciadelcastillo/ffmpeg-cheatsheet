@@ -122,6 +122,14 @@ Taken from [here](https://reiners.io/downscaling-4k-video-with-ffmpeg/).
 
 Apparently, this buffers the entire clip, so for long ones, chop it, reverse them and concat. 
 
+### Looping video
+
+You can create _boomerang_ effect by applying `reverse` and `loop` filters:
+
+    ffmpeg -i Frame_%05d.png -filter_complex "[0]reverse[r];[0][r]concat,loop=2:244,setpts=N/30/TB" output.mp4
+
+Where `30` is the fps, and `2:224` is the `number of extra loops:2 * frames per video`. 
+
 ### Concat video: from the same source
 
 Concattenating a list of videos from the same source (same format and codecs) can be done fast with the [concat demuxer](https://trac.ffmpeg.org/wiki/Concatenate#demuxer) without needing to reencode them. 
