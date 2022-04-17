@@ -126,7 +126,7 @@ Apparently, this buffers the entire clip, so for long ones, chop it, reverse the
 
 You can create _boomerang_ effect by applying `reverse` and `loop` filters:
 
-    ffmpeg -i Frame_%05d.png -filter_complex "[0]reverse[r];[0][r]concat,loop=2:244,setpts=N/30/TB" output.mp4
+    ffmpeg -framerate 30 -i Frame_%05d.png -filter_complex "[0]reverse[r];[0][r]concat,loop=2:244,setpts=N/30/TB" output.mp4
 
 Where `30` is the fps, and `2:224` is the `number of extra loops:2 * frames per video`. 
 
