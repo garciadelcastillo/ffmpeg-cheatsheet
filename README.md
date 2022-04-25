@@ -41,12 +41,6 @@ Alternatively, a video can be "accelerated" by purposedly dropping frames, setti
 
     ffmpeg -framerate 300 -i frame_%05d.png -r 30 output.mp4
 
-A video can be looped by "multiplying" the input stream:
-
-    ffmpeg -stream_loop 2 -i frame_%03d.png landscape_loop.mp4
-    
-The above will generate a video with the frames repeating 3 times (the regular one + `-stream_loop 2`). 
-
 ### GIF from frames with single palette
 
 This creates a lightweight, optimized GIF file with one palette. Useful when color is consistent across frames. 
@@ -123,6 +117,12 @@ Taken from [here](https://reiners.io/downscaling-4k-video-with-ffmpeg/).
 Apparently, this buffers the entire clip, so for long ones, chop it, reverse them and concat. 
 
 ### Looping video
+
+A video can be looped by "multiplying" the input stream:
+
+    ffmpeg -stream_loop 2 -i frame_%03d.png landscape_loop.mp4
+    
+The above will generate a video with the frames repeating 3 times (the regular one + `-stream_loop 2`). 
 
 You can create _boomerang_ effect by applying `reverse` and `loop` filters:
 
