@@ -47,7 +47,7 @@ This creates a lightweight, optimized GIF file with one palette. Useful when col
 
     ffmpeg -y -i frame_%05d.png -vf palettegen palette.png
     
-This generates a palette file from the *first frame* of the sequence.
+The above generates a palette file from the *first frame* of the sequence.
 
 GIF can then be generated from files:
 
