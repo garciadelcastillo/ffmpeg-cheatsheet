@@ -130,7 +130,7 @@ You can create _boomerang_ effect by applying `reverse` and `loop` filters:
 
 Where `30` is the fps, and `2:224` is the `number of extra loops:2 * frames per video`. 
 
-Simpler boomerang `gif` with `palette`:
+Simpler 1-loop boomerang `gif` with `palette`:
 
     ffmpeg -framerate 30 -i Frame_%05d.png -filter_complex "[0]reverse[r];[0][r]concat,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" boomerang_palette.gif
 
