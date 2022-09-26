@@ -138,9 +138,13 @@ Simpler 1-loop boomerang `gif` with `palette`:
 
 ### Concat video: from the same source
 
-Concattenating a list of videos from the same source (same format and codecs) can be done fast with the [concat demuxer](https://trac.ffmpeg.org/wiki/Concatenate#demuxer) without needing to reencode them. 
+Concattenating a list of videos from the same source **(same format and codecs)** can be done fast with the [concat demuxer](https://trac.ffmpeg.org/wiki/Concatenate#demuxer) without needing to reencode them. 
 
-First, create a `playlist.txt` file with the names of the files to `concat` (PS): 
+Concat all `*.mp4` (same dimensions & codecs) into a single file (bash/sh):
+
+    ffmpeg -f concat -safe 0 -i <(for f in ./*.mp4; do echo "file '$PWD/$f'"; done) -c copy output.mp4
+
+Alternatively, create a `playlist.txt` file with the names of the files to `concat` (PS): 
 
     foreach ($i in Get-ChildItem .\*.mp4) {echo "file '$i'" >> playlist.txt}
 
