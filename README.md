@@ -240,7 +240,7 @@ And now just add new audio to that file:
 
     ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i input.mp4 -c:v copy -c:a aac -shortest output.mp4
 
-## Add watermark to the video
+### Add watermark to the video
 
 Piece of cake ([more info](https://gist.github.com/bennylope/d5d6029fb63648582fed2367ae23cfd6)):
 
