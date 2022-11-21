@@ -239,3 +239,9 @@ And now just add new audio to that file:
 `concat` has given me problems when adding a video with no sound (like a timelapse). This adds a dummy silent track (taken from [here](https://stackoverflow.com/a/12375018/1934487)):
 
     ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i input.mp4 -c:v copy -c:a aac -shortest output.mp4
+
+## Add watermark to the video
+
+Piece of cake ([more info](https://gist.github.com/bennylope/d5d6029fb63648582fed2367ae23cfd6)):
+
+    ffmpeg -i test.mp4 -i watermark.png -filter_complex "overlay=10:10" test1.mp4
