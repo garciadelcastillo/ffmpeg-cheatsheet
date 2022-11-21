@@ -23,7 +23,7 @@ Frames can be rescaled on the fly, and image quality controlled. This example wi
     ffmpeg -framerate 30 -i frame_%05d.png output.mp4
 
 `-framerate 30` sets the rate for the *input stream*.  
-`frame_%05d.png` assumes a filename with a suffix of 5 padded digits.
+`frame_%05d.png` assumes a filename with a suffix of 5 padded digits starting at 0. Otherwise, add starting number: `ffmpeg -start_number 100 -i input.mp4 ...`
 
 To force a particular codec, use `-vf format=`:
 
