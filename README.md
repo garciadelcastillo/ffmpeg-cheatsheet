@@ -43,18 +43,22 @@ Alternatively, a video can be "accelerated" by purposedly dropping frames, setti
 
 ### GIF from frames with single palette
 
-This creates a lightweight, optimized GIF file with one palette. Useful when color is consistent across frames. 
+~This creates a lightweight, optimized GIF file with one palette. Useful when color is consistent across frames.~
 
     ffmpeg -y -i frame_%05d.png -vf palettegen palette.png
     
-The above generates a palette file from the *first frame* of the sequence.
+~The above generates a palette file from the *first frame* of the sequence.~
 
-GIF can then be generated from files:
+~GIF can then be generated from files:~
 
     ffmpeg -r 5 -y -i frame_%05d.png -i palette.png -filter_complex "paletteuse" animation.gif
 
-`-r` defines the fps rate for the GIF.
-`-y` auto-overwrites previous existing files.
+~`-r` defines the fps rate for the GIF.~
+~`-y` auto-overwrites previous existing files.~
+
+This creates a lightweight, optimized GIF file with one palette. Useful when color is consistent across frames. This version generates a palette by *looking at all frames*:
+
+    ffmpeg -r 5 -i frame_%05d.png -filter_complex "split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" animation.gif
 
 ### GIF from frames with multiple palettes
 
