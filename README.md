@@ -168,7 +168,7 @@ If videos come from different sources and/or have different formats/codecs, it i
     
 Unfortunately, there is no way a `playlist.txt` file can be fed as input for longer lists; the whole call must be programmatically generated. Also, PowerShell has a 8191 char max limit... 
 
-This repo contains `concat_generator` a Processing sketch that points to a folder, and generates a `concat.bat` file with a bash call to concat all video files in that folder. Remember to change the allowed extensions in the Processing file.
+~~This repo contains `concat_generator` a Processing sketch that points to a folder, and generates a `concat.bat` file with a bash call to concat all video files in that folder. Remember to change the allowed extensions in the Processing file.~~ See [this repo](https://github.com/garciadelcastillo/video-concat) for a video-concat helper.
 
 ### Batch process a bunch of files in a folder
 
