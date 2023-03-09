@@ -238,6 +238,26 @@ And now just add new audio to that file:
 
 [This guide](https://gist.github.com/protrolium/e0dbd4bb0f1a396fcb55) has lots of `ffmpeg` audio-related tips!
 
+### Increase audio volume
+
+Volume can be amplified with a filter:
+
+    ffmpeg -i input.mkv -filter:a "volume=5.0dB" output.mkv;
+    
+However, on my end this is typically super slow and with a lot of dropped frames. This one works better:
+
+    ffmpeg -i input.mkv -b:a 160k -vol 1024 -vcodec copy output.mkv;
+    
+Although not sure what 1024 is measured in, and [must be multiples of 256](https://bytefreaks.net/uncategorized/increase-volume-in-video-using-ffmpeg).
+
+Alternatively, we can just extract the audio track as shown above:
+
+    ffmpeg -i input.mp4 audio.wav
+
+Crank the voume up in an audio editor, and [re-stitch without encoding the video](https://video.stackexchange.com/a/22726):
+
+    ffmpeg -i input.mp4 -i audio_up.wav -b:a 160k -map 0:0 -map 1:0 -vcodec copy input_higher_vol.mp4
+
 ### Add dummy silent audio to video
 
 `concat` has given me problems when adding a video with no sound (like a timelapse). This adds a dummy silent track (taken from [here](https://stackoverflow.com/a/12375018/1934487)):
