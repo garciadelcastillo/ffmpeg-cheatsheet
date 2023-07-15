@@ -14,6 +14,10 @@ Check out my other [ImageMagick cheatsheet](https://github.com/garciadelcastillo
 
 This will take an input video, and export all frames to a folder in the video's native fps. Please note that the folder must exist.
 
+To extract a frame every `n` seconds:
+
+    ffmpeg -i input.mp4 -vf fps=1/n frame_%05d.png
+
 Frames can be rescaled on the fly, and image quality controlled. This example will downsample to `1024` px width and scale the height proportionally, and set jpeg quality to best ([2 best-32 worst range](https://stackoverflow.com/a/10234065)):
 
     ffmpeg -i input.mp4 -vf scale=1024:-1 -qscale:v 2 frames/frame_%05d.jpg
