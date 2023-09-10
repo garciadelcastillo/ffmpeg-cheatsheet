@@ -220,6 +220,10 @@ General **metadata** of a file can be exported to text:
 
     ffmpeg -i input.mp4 -f ffmetadata metadata.txt
 
+Dump all stream props to a `json` fil :  
+
+    ffprobe -hide_banner -show_streams -of json .\video.mp4 > video_props.json
+
 ### Replacing the sound track on a video
 
 Or in other words, extracting the audio track of a video, removing it and adding a new one. Thanks @arastoo for the pointers!
