@@ -62,7 +62,7 @@ Alternatively, a video can be "accelerated" by purposedly dropping frames, setti
 
 This creates a lightweight, optimized GIF file with one palette. Useful when color is consistent across frames. This version generates a palette by *looking at all frames*:
 
-    ffmpeg -r 5 -i frame_%05d.png -filter_complex "split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" animation.gif
+    ffmpeg -r 5 -start_number 1005 -i frame_%05d.png -filter_complex "split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" animation.gif
 
 ### GIF from frames with multiple palettes
 
