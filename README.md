@@ -142,7 +142,11 @@ Simpler 1-loop boomerang `gif` with `palette`:
 
     ffmpeg -framerate 30 -i Frame_%05d.png -filter_complex "[0]reverse[r];[0][r]concat,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" boomerang_palette.gif
 
+### Resize/fit video to resolution
 
+The following will scale up the video to fit 1920x1080, maintaining ratio and padding with a black background ([source](https://stackoverflow.com/a/46693766/1934487)):
+
+    ffmpeg -i .\small_video.mp4 -vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1" fullhd_video.mp4
 
 ### Concat video: from the same source
 
