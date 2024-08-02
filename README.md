@@ -239,6 +239,7 @@ First of all, and to avoid transcoding, you should check the audio file type tha
 Once the file format is determined, extract sound the file without re-encoding:
 
     ffmpeg -i video.mp4 -vn -acodec copy oldAudio.aac
+    ffmpeg -i video.mp4 -vn -acodec copy oldAudio.mp3
 
 Remove the audio file from the video:
 
