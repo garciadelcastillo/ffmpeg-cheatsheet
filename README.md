@@ -288,3 +288,9 @@ Piece of cake ([more info](https://gist.github.com/bennylope/d5d6029fb63648582fe
 You can apply the same `ffmpeg` command to multiple files from `cmd` [doing this](https://stackoverflow.com/a/56244203/1934487):
 
     for %i in (*.mkv) do ffmpeg -i "%i" "%~ni_converted.mp4"
+
+### WAV TO MP# CONVERSION
+
+Audio conversion:
+
+    ffmpeg -i input.wav -vn -ar 44100 -ac 2 -b:a 192k output.mp3
