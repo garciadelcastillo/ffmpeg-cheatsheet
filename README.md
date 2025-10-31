@@ -82,10 +82,16 @@ See [more options here](https://superuser.com/a/556031).
 
 ### Speeding video up
 
+Simple way:
+
     ffmpeg -i input.mp4 -an -filter:v "setpts=0.1*PTS" output.mp4
 
 `0.1` accelerates x10 by dropping frames, `0.01` would accelerate x100 and so on.
 `-an` removes audio.
+
+Keeping audio (example for 4x):
+
+    ffmpeg -i input.mp4 -filter_complex "[0:v]setpts=0.25*PTS[v];[0:a]atempo=4.0[a]" -map "[v]" -map "[a]" output.mp4
 
 New frames can be added using motion interpolation via `minterpolate`:
 
