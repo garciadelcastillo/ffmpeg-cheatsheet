@@ -118,7 +118,7 @@ This example sets quality to terrible (`-crf` from `0` best quality to `51` wors
 Omit the `-to` parameter to trim till the end. Use `-t` parameter instead to specify duration (not end time). 
 @RamyAydarous notes that this method [doesn't start the trim from the previous keyframe](https://github.com/mifi/lossless-cut/pull/13), and therefore generates an initial static frame that extends into the next keyframe. Switch the order of `-ss` and `-i` parameters to force trim from previous keyframe (see [here](https://trac.ffmpeg.org/wiki/Seeking) end of the page).
 
-### Changing video size
+### Changing video size/resolution
 
     ffmpeg -i input.mp4 -vf scale=960:540 -c:v libx264 smaller.mp4
     
